@@ -7,7 +7,7 @@ import zipfile
 import numpy as np
 from PIL import Image
 import albumentations as A
-from aug_pipelines import hflip, vflip, colorize, darken, crop
+from augmentation_pipelines import hflip, vflip, colorize, darken, crop
 
 
 def augment(
