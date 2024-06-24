@@ -1,6 +1,7 @@
 import os
 import cv2
 import json
+import glob
 import shutil
 import zipfile
 import numpy as np
@@ -164,6 +165,7 @@ if __name__ == "__main__":
         include_input=True
     )
 
+    # file operations & ZIP compression
     shutil.rmtree(img_dir)
     shutil.rmtree(aug_dir_1)
     shutil.rmtree(aug_dir_2)
@@ -175,3 +177,9 @@ if __name__ == "__main__":
     with zipfile.ZipFile(zip_path, 'w') as zipf:
         for file in files:
             zipf.write(file, os.path.basename(file))
+
+    shutil.rmtree('images/')
+    
+    json_files = glob.glob('*.json')
+    for json_file in json_files:
+        os.remove(json_file)
